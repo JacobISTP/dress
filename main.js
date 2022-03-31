@@ -242,7 +242,6 @@ const balloonMenuEachItem = (event, target_element = "", title = "") => {
 
   balloonMenu_div.classList.add("balloonMenu");
   balloonMenu_div_specific.classList.add("balloonMenuBtn");
-  balloonMenu_div_specific.classList.add("font_basic");
   balloonMenu_a_page.classList.add("balloonMenuAnchor");
   balloonMenu_a_insta.classList.add("balloonMenuAnchor");
   let balloon_a_title;

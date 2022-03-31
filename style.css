@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&family=Nanum+Pen+Script&display=swap");
 @import "ballon.css";
 
 html,
@@ -130,6 +131,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: "Nanum Pen Script", cursive;
 }
 main {
   width: 80vw;
@@ -140,7 +142,7 @@ main {
 }
 
 header {
-  font-size: 30px;
+  font-size: 50px;
   font-weight: bold;
   margin: 20px;
 }
@@ -157,14 +159,13 @@ header {
 #dress > div,
 #makeup > div {
   background-color: darksalmon;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: whitesmoke;
   border-radius: 5px;
   margin: 10px;
   margin-bottom: 50px;
   justify-content: center;
 
-  font-size: 18px;
+  font-size: 30px;
   text-align: center;
   padding: 30px 0px;
   position: relative;
