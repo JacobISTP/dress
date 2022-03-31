@@ -224,10 +224,11 @@ function getMatchedValueByKey(array, key, title) {
       nameNFD === array[index]["data"][0]
     ) {
       let value_by_key_title = array[index][key];
+      console.log(array[index]["data"][0]);
       return value_by_key_title;
     }
-    return;
   }
+  return;
 }
 
 const balloonMenuEachItem = (event, target_element = "", title = "") => {
@@ -236,6 +237,9 @@ const balloonMenuEachItem = (event, target_element = "", title = "") => {
   const balloonMenu_div_specific = document.createElement("button");
   const balloonMenu_a_page = document.createElement("a");
   const balloonMenu_a_insta = document.createElement("a");
+
+  balloonMenu_a_page.innerText = "홈페이지";
+  balloonMenu_a_insta.innerText = "인스타";
 
   balloonMenu_div.classList.add("balloonMenu");
   balloonMenu_div_specific.classList.add("balloonMenuBtn");
@@ -268,6 +272,10 @@ const balloonMenuEachItem = (event, target_element = "", title = "") => {
   // balloonMenu_a_page.appendChild(balloonMenu_a_page_img);
   balloonMenu_div_div.appendChild(balloonMenu_div_specific);
   balloonMenu_div_div.appendChild(balloonMenu_a_page);
+  console.log(balloonMenu_a_insta.href);
+  if (balloonMenu_a_insta.href != "") {
+    balloonMenu_div_div.appendChild(balloonMenu_a_insta);
+  }
   balloonMenu_div.appendChild(balloonMenu_div_div);
   if (target_element === "") {
     event.target.appendChild(balloonMenu_div);
@@ -286,7 +294,6 @@ const removeBalloonMenuEachItem = () => {
 };
 
 const specificContents = () => {};
-for (let d = 0; d < dressshop.length; d++) {}
 
 for (let i = 0; i < dressshop.length; i++) {
   const itembox = boxmaker(dressshop, i);
