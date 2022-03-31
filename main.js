@@ -184,7 +184,6 @@ function f_div_item(div_item) {
   div_item.style.display = "flex";
   div_item.style.flexDirection = "column";
   div_item.style.alignItems = "center";
-  div_item.style.paddingBottom = "10px";
 }
 
 function f_a_title(a_title) {
@@ -289,7 +288,7 @@ const removeBalloonMenuEachItem = () => {
 
 const specificContents = () => {};
 
-for (let i = 0; i < dressshop.length; i++) {
+for (let i = 0; i < dressshop.length - 3; i++) {
   const itembox = boxmaker(dressshop, i);
   dressgrid.appendChild(itembox[0]);
 }
