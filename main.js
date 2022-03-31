@@ -1,3 +1,8 @@
+"use strict";
+
+const dressgrid = document.querySelector("#dress");
+const makeupgrid = document.querySelector("#makeup");
+
 const dressshop = [
   {
     data: [
@@ -167,3 +172,121 @@ const makeupshop = [
     instagram: "https://www.instagram.com/la_beaute_beauty_house/",
   },
 ];
+const shops = [];
+shops.push(dressshop, makeupshop);
+console.log(shops);
+
+function f_div_item(div_item) {
+  div_item.classList.add("eachMovie");
+  div_item.classList.add("movie_div_size");
+  div_item.style.display = "flex";
+  div_item.style.flexDirection = "column";
+  div_item.style.alignItems = "center";
+  div_item.style.paddingBottom = "10px";
+}
+
+function f_a_title(a_title) {
+  a_title.rel = "noreferrer";
+  a_title.target = "_blank";
+  a_title.style.textAlign = "center";
+}
+const boxmaker = (array, index, balloon = true) => {
+  const div_item = document.createElement("div");
+  const div_title = document.createElement("div");
+  const a_title = document.createElement("a");
+  const item_title = document.createElement("h3");
+  const returnArray = [div_item, a_title];
+
+  f_div_item(div_item);
+
+  item_title.innerText = `${array[index].data[0]}`;
+
+  a_title.appendChild(item_title);
+  div_title.appendChild(a_title);
+  div_item.appendChild(div_title);
+  if (balloon === true) {
+    div_item.addEventListener("mouseenter", balloonMenuEachItem);
+    div_item.addEventListener("mouseleave", removeBalloonMenuEachItem);
+  }
+
+  return returnArray;
+};
+
+function getMatchedValueByKey(array, key, title) {
+  for (let index = 0; index < array.length; index++) {
+    const nameNFC = title.normalize("NFC");
+    const nameNFD = title.normalize("NFD");
+
+    if (
+      nameNFC === array[index]["data"][0] ||
+      nameNFD === array[index]["data"][0]
+    ) {
+      let value_by_key_title = array[index][key];
+      return value_by_key_title;
+    }
+    return;
+  }
+}
+
+const balloonMenuEachItem = (event, target_element = "", title = "") => {
+  const balloonMenu_div = document.createElement("div");
+  const balloonMenu_div_div = document.createElement("div");
+  const balloonMenu_div_specific = document.createElement("button");
+  const balloonMenu_a_page = document.createElement("a");
+  const balloonMenu_a_insta = document.createElement("a");
+
+  balloonMenu_div.classList.add("balloonMenu");
+  balloonMenu_div_specific.classList.add("balloonMenuBtn");
+  balloonMenu_div_specific.classList.add("font_basic");
+  balloonMenu_a_page.classList.add("balloonMenuAnchor");
+  balloonMenu_a_insta.classList.add("balloonMenuAnchor");
+  let balloon_a_title;
+  try {
+    balloon_a_title = event.target.innerText;
+  } catch {
+    balloon_a_title = title;
+  }
+
+  balloonMenu_div_specific.innerText = "상세정보";
+
+  f_a_title(balloonMenu_a_page);
+  f_a_title(balloonMenu_a_insta);
+  balloonMenu_a_page.href = getMatchedValueByKey(
+    shops,
+    "page",
+    balloon_a_title
+  );
+  balloonMenu_a_insta.href = getMatchedValueByKey(
+    shops,
+    "instagram",
+    balloon_a_title
+  );
+  // balloonMenu_a_page_img.src = "./img/logo/page.png";
+
+  // balloonMenu_a_page.appendChild(balloonMenu_a_page_img);
+  balloonMenu_div_div.appendChild(balloonMenu_div_specific);
+  balloonMenu_div_div.appendChild(balloonMenu_a_page);
+  balloonMenu_div.appendChild(balloonMenu_div_div);
+  if (target_element === "") {
+    event.target.appendChild(balloonMenu_div);
+  } else {
+    target_element.appendChild(balloonMenu_div);
+  }
+
+  balloonMenu_div_specific.addEventListener("click", specificContents);
+};
+const removeBalloonMenuEachItem = () => {
+  let mouseout_item = document.querySelectorAll(".balloonMenu");
+  mouseout_item = mouseout_item[mouseout_item.length - 1];
+  try {
+    mouseout_item.remove();
+  } catch {}
+};
+
+const specificContents = () => {};
+for (let d = 0; d < dressshop.length; d++) {}
+
+for (let i = 0; i < shops[0].length; i++) {
+  const itembox = boxmaker(shops[0], i);
+  dressgrid.appendChild(itembox[0]);
+}
