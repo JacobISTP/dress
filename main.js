@@ -172,8 +172,10 @@ const makeupshop = [
     instagram: "https://www.instagram.com/la_beaute_beauty_house/",
   },
 ];
-const shops = [];
-shops.push(dressshop, makeupshop);
+const shops = dressshop;
+for (let m = 0; m < makeupshop.length; m++) {
+  shops.push(makeupshop[m]);
+}
 console.log(shops);
 
 function f_div_item(div_item) {
@@ -286,7 +288,11 @@ const removeBalloonMenuEachItem = () => {
 const specificContents = () => {};
 for (let d = 0; d < dressshop.length; d++) {}
 
-for (let i = 0; i < shops[0].length; i++) {
-  const itembox = boxmaker(shops[0], i);
+for (let i = 0; i < dressshop.length; i++) {
+  const itembox = boxmaker(dressshop, i);
   dressgrid.appendChild(itembox[0]);
+}
+for (let i = 0; i < makeupshop.length; i++) {
+  const itembox = boxmaker(makeupshop, i);
+  makeupgrid.appendChild(itembox[0]);
 }
