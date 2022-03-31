@@ -224,7 +224,7 @@ function getMatchedValueByKey(array, key, title) {
       nameNFD === array[index]["data"][0]
     ) {
       let value_by_key_title = array[index][key];
-      console.log(array[index]["data"][0]);
+      console.log(value_by_key_title);
       return value_by_key_title;
     }
   }
@@ -262,18 +262,12 @@ const balloonMenuEachItem = (event, target_element = "", title = "") => {
     "page",
     balloon_a_title
   );
-  balloonMenu_a_insta.href = getMatchedValueByKey(
-    shops,
-    "instagram",
-    balloon_a_title
-  );
-  // balloonMenu_a_page_img.src = "./img/logo/page.png";
-
-  // balloonMenu_a_page.appendChild(balloonMenu_a_page_img);
+  const insta = getMatchedValueByKey(shops, "instagram", balloon_a_title);
+  balloonMenu_a_insta.href = insta;
   balloonMenu_div_div.appendChild(balloonMenu_div_specific);
   balloonMenu_div_div.appendChild(balloonMenu_a_page);
   console.log(balloonMenu_a_insta.href);
-  if (balloonMenu_a_insta.href != "") {
+  if (insta !== "") {
     balloonMenu_div_div.appendChild(balloonMenu_a_insta);
   }
   balloonMenu_div.appendChild(balloonMenu_div_div);
